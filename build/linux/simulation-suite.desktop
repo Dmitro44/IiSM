@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=simulation-suite
+Exec=simulation-suite
+Icon=simulation-suite
+Categories=Development;
+Terminal=false
+Keywords=wails
+Version=1.0
+StartupNotify=false
