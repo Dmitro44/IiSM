@@ -1,0 +1,939 @@
+/* Lab-specific layout polish layered on top of the neon-night theme. */
+
+.app-shell {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  width: min(1180px, 100%);
+  margin: 0 auto;
+}
+
+/* Первая строка навигации: бренд и разделы-инструменты. */
+.app-header {
+  display: flex;
+  align-items: center;
+  gap: var(--s-3);
+  padding: 0.6rem var(--s-2);
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.app-brand {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: 0.55rem;
+}
+
+.app-brand-mark {
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 8px;
+  background: var(--accent);
+  color: #252720;
+  font-size: 0.85rem;
+  font-weight: 800;
+}
+
+.app-brand-name {
+  font-size: 0.98rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+}
+
+.section-tabs {
+  display: flex;
+  flex: 1;
+  align-items: center;
+  gap: 0.2rem;
+  min-width: 0;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.section-tabs::-webkit-scrollbar {
+  display: none;
+}
+
+.section-tab {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.5rem 0.65rem;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--muted);
+  font-size: 0.85rem;
+  white-space: nowrap;
+  cursor: pointer;
+  transition:
+    border-color 0.18s ease,
+    background 0.18s ease,
+    color 0.18s ease;
+}
+
+.section-tab svg {
+  flex: 0 0 auto;
+  width: 15px;
+  height: 15px;
+  opacity: 0.8;
+}
+
+.section-tab:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text);
+}
+
+.section-tab.active {
+  border-color: rgba(181, 189, 104, 0.28);
+  background: rgba(181, 189, 104, 0.13);
+  color: #e8ecc9;
+  font-weight: 600;
+}
+
+/* Вторая строка навигации: задачи активного раздела. */
+.task-tabs {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.4rem 0.5rem;
+  background: rgba(255, 255, 255, 0.025);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: var(--radius);
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.task-tabs::-webkit-scrollbar {
+  display: none;
+}
+
+.task-tab {
+  flex: 0 0 auto;
+  padding: 0.42rem 0.7rem;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--muted);
+  font-size: 0.85rem;
+  white-space: nowrap;
+  cursor: pointer;
+  transition:
+    border-color 0.18s ease,
+    background 0.18s ease,
+    color 0.18s ease;
+}
+
+.task-tab:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text);
+}
+
+.task-tab.active {
+  border-color: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.07);
+  color: var(--text);
+  font-weight: 600;
+}
+
+.section-tab:focus-visible,
+.task-tab:focus-visible {
+  outline: 2px solid rgba(181, 189, 104, 0.7);
+  outline-offset: 2px;
+}
+
+.content {
+  min-width: 0;
+}
+
+.panel {
+  padding: var(--s-3);
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+.panel-header h2 {
+  margin: 0 0 0.35rem;
+  font-size: clamp(1.3rem, 2.5vw, 2rem);
+  letter-spacing: -0.02em;
+}
+
+.panel-header p {
+  margin: 0 0 var(--s-3);
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.placeholder-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--s-2);
+}
+
+.placeholder-header p {
+  margin-bottom: 0;
+}
+
+.status-chip {
+  flex: 0 0 auto;
+  padding: 0.18rem 0.55rem;
+  border: 1px solid rgba(181, 189, 104, 0.28);
+  border-radius: 999px;
+  background: rgba(181, 189, 104, 0.1);
+  color: #cfd6a4;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+}
+
+.placeholder {
+  margin-top: var(--s-3);
+  padding: var(--s-4) var(--s-3);
+  border: 1px dashed rgba(255, 255, 255, 0.12);
+  border-radius: var(--radius);
+  text-align: center;
+}
+
+.placeholder h3 {
+  margin: 0 0 0.5rem;
+  font-size: 1.15rem;
+}
+
+.placeholder p {
+  max-width: 42rem;
+  margin: 0 auto;
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+.controls-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 0.9rem;
+  align-items: end;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.field span {
+  color: var(--muted);
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+/* Математические обозначения (λ, α, a, b, p, χ², x̄) размечаются тегом <var>.
+   Подписи полей и стат-блоков набраны uppercase, а от него греческие строчные
+   превращаются в неотличимые от латиницы заглавные: Α выглядит как A, Χ — как
+   X, а p-значение читается как P-значение. <var> отменяет это преобразование и
+   даёт курсив — так переменные принято набирать и так они не сливаются с
+   текстом подписи. */
+var {
+  font-style: italic;
+  text-transform: none;
+  letter-spacing: normal;
+}
+
+.field input,
+.field select,
+.category-row input,
+table input {
+  width: 100%;
+  padding: 0.65rem 0.75rem;
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text);
+  border: 1px solid var(--glass-border);
+  border-radius: 9px;
+  outline: none;
+  font-size: 16px;
+  /* Form-контролы по умолчанию не наследуют шрифт страницы и берут системный
+     Arial, из-за чего текст в полях выглядит иначе, чем остальной интерфейс. */
+  font-family: inherit;
+  -webkit-user-select: text;
+  user-select: text;
+  /* Без снятия appearance WebKitGTK рисует поля как нативные GTK-виджеты и
+     игнорирует наши background, color и font-family: поле получается светлым
+     с чужим шрифтом. Chromium это не проявляет, поэтому проверять приходится
+     в дескоп-сборке.
+
+     Побочный эффект: у number-полей пропадают нативные спиннеры-кнопочки
+     (стрелки вверх/вниз). Свой вариант спиннеров не рисовался -- значения
+     в полях вводятся с клавиатуры, а N задаётся один раз. */
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+/* Стрелка раскрытия: нативную убирает appearance:none, а без неё селект
+   выглядит как обычное поле. */
+.field select {
+  padding-right: 2rem;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23a3ab91' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  background-size: 0.6rem 0.36rem;
+}
+
+/* У input и select своя внутренняя метрика строки, поэтому без явной высоты они
+   отличаются на пиксель: input тянется по своему line-height, select -- по
+   содержимому option. Фиксированная высота выравнивает их по одной базе. */
+.field input,
+.field select {
+  height: 2.625rem;
+}
+
+.field input:focus,
+.field select:focus,
+.category-row input:focus {
+  border-color: rgba(181, 189, 104, 0.55);
+}
+
+.actions {
+  margin-top: var(--s-3);
+}
+
+.error {
+  margin-top: var(--s-3);
+  padding: 0.75rem 0.9rem;
+  border-radius: 10px;
+  background: rgba(255, 77, 77, 0.12);
+  border: 1px solid rgba(255, 77, 77, 0.3);
+  color: #ffc7c7;
+}
+
+.result-card {
+  margin-top: var(--s-3);
+  padding: var(--s-3);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius);
+  overflow-x: auto;
+}
+
+.table-wrap {
+  overflow-x: auto;
+}
+
+.table-wrap table {
+  width: 100%;
+  table-layout: auto;
+}
+
+.result-card h3,
+.result-card h4 {
+  margin: 0 0 0.75rem;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 0.75rem;
+  margin-bottom: var(--s-3);
+}
+
+.stats-grid > div {
+  padding: 0.75rem 0.85rem;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.stats-grid strong {
+  display: block;
+  margin-bottom: 0.25rem;
+  color: var(--muted);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.stats-grid span {
+  display: block;
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 0.5rem;
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+th,
+td {
+  padding: 0.55rem 0.6rem;
+  text-align: left;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  white-space: nowrap;
+  font-size: 1rem;
+}
+
+th:first-child,
+td:first-child {
+  white-space: normal;
+}
+
+th {
+  color: var(--muted);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.category-editor {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  margin-bottom: var(--s-3);
+}
+
+.category-row {
+  display: flex;
+  align-items: flex-end;
+  gap: 0.55rem;
+  flex-wrap: wrap;
+}
+
+.category-row .field {
+  flex: 1 1 180px;
+  min-width: 160px;
+}
+
+.category-row > .btn-small {
+  flex: 0 0 auto;
+  height: 41px;
+  white-space: nowrap;
+}
+
+.category-row-header {
+  color: var(--muted);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.category-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  flex-wrap: wrap;
+}
+
+.category-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 0.75rem;
+}
+
+.category-table th,
+.category-table td {
+  padding: 0.45rem 0.55rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  vertical-align: middle;
+}
+
+.category-table th {
+  color: var(--muted);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.category-table td:first-child {
+  width: 5rem;
+  font-weight: 700;
+}
+
+.category-table td:nth-child(2) {
+  width: 100%;
+}
+
+.prob-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.6rem;
+  margin-bottom: 0.75rem;
+}
+
+.prob-item {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.5rem;
+  border: 1px solid var(--glass-border);
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.prob-name {
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.prob-item input {
+  width: 100%;
+  min-width: 0;
+  padding: 0.5rem 0.55rem;
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text);
+  border: 1px solid var(--glass-border);
+  border-radius: 6px;
+  font-size: 16px;
+}
+
+.prob-item .btn-small {
+  padding: 0.45rem 0.55rem;
+  white-space: nowrap;
+}
+
+@media (max-width: 1000px) {
+  .prob-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 650px) {
+  .prob-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.category-table input {
+  width: 100%;
+  max-width: 180px;
+  padding: 0.55rem 0.65rem;
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text);
+  border: 1px solid var(--glass-border);
+  border-radius: 6px;
+}
+
+.btn-small {
+  border: 1px solid var(--glass-border);
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text);
+  border-radius: 8px;
+  padding: 0.45rem 0.7rem;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.btn-small:hover {
+  background: rgba(255, 255, 255, 0.09);
+}
+
+.probability-sum {
+  font-weight: 700;
+}
+
+.probability-sum.ok {
+  color: #b5bd68;
+}
+
+.probability-sum.bad {
+  color: #ff8d9d;
+}
+
+.wheel-layout {
+  display: grid;
+  grid-template-columns: minmax(200px, 260px) minmax(0, 1fr);
+  gap: var(--s-3);
+  align-items: start;
+}
+
+.wheel-figure {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.wheel-disc {
+  width: 100%;
+  max-width: 260px;
+  filter: drop-shadow(0 6px 18px rgba(0, 0, 0, 0.35));
+}
+
+/* Секторы крутятся вокруг центра колеса, а указатель и ступица стоят на месте.
+   transform-box нужен, чтобы transform-origin считался от viewBox, а не от
+   габаритов самой группы. */
+.wheel-rotor {
+  transform-box: view-box;
+  transform-origin: 110px 110px;
+  transition: transform 1.8s cubic-bezier(0.16, 0.84, 0.24, 1.08);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wheel-rotor {
+    transition-duration: 1ms;
+  }
+}
+
+/* Непобедившие сектора приглушаются, чтобы выпавшая игра читалась сразу. */
+.wheel-sector {
+  opacity: 0.4;
+  stroke: rgba(20, 24, 21, 0.55);
+  stroke-width: 1;
+  transition: opacity 0.25s ease;
+}
+
+.wheel-sector.winner {
+  opacity: 1;
+  stroke: #fffdf2;
+  stroke-width: 2;
+}
+
+.wheel-pointer {
+  fill: #fffdf2;
+  stroke: rgba(20, 24, 21, 0.55);
+}
+
+.wheel-hub {
+  fill: #1f2320;
+  stroke: rgba(255, 255, 255, 0.25);
+  stroke-width: 2;
+}
+
+.wheel-caption {
+  margin: 0;
+  color: var(--muted);
+  text-align: center;
+}
+
+.wheel-side {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-2);
+  min-width: 0;
+}
+
+.wheel-meta {
+  font-weight: 700;
+}
+
+.wheel-row-winner td {
+  background: rgba(181, 189, 104, 0.12);
+}
+
+@media (max-width: 900px) {
+  .wheel-layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .wheel-disc {
+    max-width: 220px;
+  }
+}
+
+@media (max-width: 900px) {
+  .app-header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.6rem;
+  }
+
+  .section-tabs {
+    justify-content: flex-start;
+  }
+
+  .category-row {
+    align-items: stretch;
+  }
+
+  .category-row > .btn-small {
+    width: 100%;
+  }
+}
+
+/* ----- Random variables ---------------------------------------------------- */
+
+.formula-strip {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0.35rem 1rem;
+  margin-bottom: var(--s-2);
+  padding: 0.7rem 0.9rem;
+  border: 1px solid rgba(181, 189, 104, 0.2);
+  border-radius: 8px;
+  background: rgba(181, 189, 104, 0.06);
+}
+
+.formula-strip code {
+  color: #e8ecc9;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.formula-strip span {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.result-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.5rem 1rem;
+}
+
+.result-head h3 {
+  margin: 0;
+}
+
+.result-note {
+  margin: 0.55rem 0 0;
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+.sample-preview {
+  margin: 0.75rem 0 0;
+  color: var(--text);
+  line-height: 1.65;
+  overflow-wrap: anywhere;
+}
+
+.sample-preview strong {
+  color: var(--muted);
+  font-weight: 600;
+}
+
+.stats-grid small {
+  display: block;
+  margin-top: 0.2rem;
+  color: var(--muted);
+  font-size: 0.76rem;
+  font-weight: 400;
+}
+
+.histogram-card {
+  margin-top: var(--s-3);
+  padding: var(--s-3);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius);
+}
+
+.histogram-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.5rem 1rem;
+}
+
+.histogram-head h4 {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.histogram-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.9rem;
+  color: var(--muted);
+  font-size: 0.78rem;
+}
+
+.legend-swatch {
+  display: inline-block;
+  width: 0.65rem;
+  height: 0.65rem;
+  margin-right: 0.3rem;
+  border-radius: 2px;
+  vertical-align: -0.05rem;
+}
+
+.legend-swatch.observed {
+  background: var(--accent);
+}
+
+.legend-swatch.expected {
+  background: rgba(255, 255, 255, 0.35);
+}
+
+.histogram-scroll {
+  margin-top: 0.9rem;
+  overflow-x: auto;
+}
+
+.histogram-plot {
+  display: grid;
+  grid-template-columns: 3.2rem minmax(0, 1fr);
+  gap: 0.5rem;
+  min-width: 100%;
+}
+
+.histogram-axis {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: var(--chart-height);
+  padding-bottom: 0.2rem;
+  color: var(--muted);
+  font-size: 0.7rem;
+  text-align: right;
+}
+
+.histogram-bars {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.2rem;
+  min-width: 100%;
+}
+
+.histogram-column {
+  display: flex;
+  flex: 1 1 0;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+  min-width: 34px;
+}
+
+.histogram-bar-group {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 2px;
+  width: 100%;
+  height: var(--chart-height);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.16);
+  background-image: repeating-linear-gradient(
+    to top,
+    transparent 0,
+    transparent calc(25% - 1px),
+    rgba(255, 255, 255, 0.055) calc(25% - 1px),
+    rgba(255, 255, 255, 0.055) 25%
+  );
+}
+
+.histogram-bar {
+  flex: 1 1 0;
+  max-width: 16px;
+  min-height: 0;
+  border-radius: 2px 2px 0 0;
+  transition: height 0.25s ease;
+}
+
+.histogram-bar.observed {
+  background: var(--accent);
+}
+
+.histogram-bar.expected {
+  background: rgba(255, 255, 255, 0.34);
+}
+
+.histogram-label {
+  max-width: 100%;
+  color: var(--muted);
+  font-size: 0.64rem;
+  line-height: 1.25;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.histogram-column.rotated .histogram-label {
+  font-size: 0.6rem;
+}
+
+.test-card {
+  margin-top: 0.6rem;
+  padding: 0.85rem 0.95rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.025);
+}
+
+.test-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.5rem 1rem;
+}
+
+.test-verdict {
+  padding: 0.22rem 0.62rem;
+  border-radius: 999px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.test-verdict.accepted {
+  border: 1px solid rgba(181, 189, 104, 0.35);
+  background: rgba(181, 189, 104, 0.15);
+  color: #dbe2a9;
+}
+
+.test-verdict.rejected {
+  border: 1px solid rgba(255, 141, 157, 0.35);
+  background: rgba(255, 141, 157, 0.12);
+  color: #ffb3bf;
+}
+
+.test-stats {
+  margin-top: 0.85rem;
+  margin-bottom: 0;
+}
+
+.discrete-editor {
+  margin-bottom: var(--s-2);
+}
+
+.discrete-editor .category-table td:first-child {
+  width: 2.5rem;
+}
+
+.discrete-editor .category-table td:nth-child(2),
+.discrete-editor .category-table td:nth-child(3) {
+  width: 38%;
+}
+
+.discrete-editor .category-table td:last-child {
+  width: 1%;
+  white-space: nowrap;
+}
+
+.btn:disabled,
+.btn-small:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+@media (max-width: 700px) {
+  .histogram-plot {
+    grid-template-columns: 2.6rem minmax(0, 1fr);
+  }
+
+  .histogram-column {
+    min-width: 30px;
+  }
+}
