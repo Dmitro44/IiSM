@@ -26,3 +26,15 @@ export const sections: LabSection[] = [
       { id: "wheel", label: "Колесо фортуны", component: WheelOfFortune },
     ],
   },
+  {
+    id: "variables",
+    label: "Величины",
+    description:
+      "Непрерывные и дискретные величины, статистические оценки и критерии согласия.",
+    icon: "variables",
+    tasks: [
+      { id: "continuous", label: "Непрерывная СВ", component: ContinuousVariable },
+      { id: "discrete", label: "Дискретная СВ", component: DiscreteVariable },
+    ],
+  },
+];
