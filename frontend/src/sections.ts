@@ -5,6 +5,8 @@ import FullGroupEvents from "./components/FullGroupEvents.vue";
 import WheelOfFortune from "./components/WheelOfFortune.vue";
 import ContinuousVariable from "./components/ContinuousVariable.vue";
 import DiscreteVariable from "./components/DiscreteVariable.vue";
+import BivariateContinuous from "./components/BivariateContinuous.vue";
+import BivariateDiscrete from "./components/BivariateDiscrete.vue";
 import type { LabSection } from "./types/navigation";
 
 export const sections: LabSection[] = [
@@ -35,6 +37,21 @@ export const sections: LabSection[] = [
     tasks: [
       { id: "continuous", label: "Непрерывная СВ", component: ContinuousVariable },
       { id: "discrete", label: "Дискретная СВ", component: DiscreteVariable },
+    ],
+  },
+  {
+    id: "bivariate",
+    label: "Двумерные величины",
+    description:
+      "Двумерная НСВ варианта 3 и двумерная ДСВ: независимость, условные распределения, оценки и критерии.",
+    icon: "bivariate",
+    tasks: [
+      {
+        id: "continuous",
+        label: "Непрерывная 2D",
+        component: BivariateContinuous,
+      },
+      { id: "discrete", label: "Дискретная 2D", component: BivariateDiscrete },
     ],
   },
 ];

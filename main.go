@@ -5,6 +5,7 @@ import (
 	"log"
 	"time"
 
+	"github.com/Dmitro44/IiSM/internal/bivariate"
 	"github.com/Dmitro44/IiSM/internal/events"
 	"github.com/Dmitro44/IiSM/internal/randomvars"
 	"github.com/Dmitro44/IiSM/internal/wheel"
@@ -40,6 +41,7 @@ func main() {
 		Description: "Simulation suite for random events, random variables, queueing systems and Petri nets",
 		Services: []application.Service{
 			application.NewService(&events.EventService{}),
+			application.NewService(bivariate.NewBivariateService()),
 			application.NewService(randomvars.NewRandomVariableService()),
 			application.NewService(wheel.NewWheelService()),
 		},
